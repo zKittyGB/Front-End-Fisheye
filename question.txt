@@ -1,0 +1,4 @@
+index.js
+
+ligne 32
+photographerFactory ? A quoi il sert ? 
