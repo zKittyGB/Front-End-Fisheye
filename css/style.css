@@ -29,15 +29,42 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
     margin-top: 100px;
+    justify-items: center;
 }
 
 
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 36px;
+    margin-bottom: 10px;
 }
 
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pVille {
+    font-size: 16px;
+    color: #901c1c;
+    margin: 0;
+}
+
+.pTagline {
+    font-size: 12px;
+    margin: 0;
+}
+
+.pPrice {
+    font-size: 10px;
+    color: #757575;
+    margin: 0;
 }

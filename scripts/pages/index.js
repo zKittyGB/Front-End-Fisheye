@@ -20,3 +20,9 @@
     };
     
     init();
+    function loadPhotographer(){
+        const photographersSection = document.querySelector(".photographer_section");
+        console.log(photographersSection);
+        
+    }
+    loadPhotographer();
