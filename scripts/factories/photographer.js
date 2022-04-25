@@ -5,6 +5,9 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        const div = document.createElement ('div')
+        div.setAttribute("id", name);
+        div.classList.add("photographer");
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
@@ -18,13 +21,12 @@ function photographerFactory(data) {
         const pPrice = document.createElement( 'p' );
         pPrice.classList.add('pPrice')
         pPrice.textContent = `${price}€/jour`;
-        article.appendChild(img);
-        article.appendChild(h2);
+        article.appendChild(div);
+        div.appendChild(img);
+        div.appendChild(h2);
         article.appendChild(pVille);
         article.appendChild(pTagline);
         article.appendChild(pPrice);
-        article.classList.add("photographer");
-        article.setAttribute("id", name.replace(/\s+/g, '_'));
         return (article);
     }
     return { name, picture, getUserCardDOM }

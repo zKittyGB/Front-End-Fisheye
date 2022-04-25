@@ -52,6 +52,12 @@ article {
     align-items: center;
 }
 
+.photographer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .pVille {
     font-size: 16px;
     color: #901c1c;
