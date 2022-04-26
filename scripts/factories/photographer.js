@@ -9,7 +9,8 @@ function photographerFactory(data) {
         div.setAttribute("id", name);
         div.classList.add("photographer");
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture, "alt", name)
+        img.setAttribute("alt", name)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const pVille = document.createElement( 'p' );
