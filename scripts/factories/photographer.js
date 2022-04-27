@@ -1,8 +1,6 @@
 function photographerFactory(data) {
-    const { name, city, country, tagline, price, portrait } = data;
-
+    const { name, id, city, country, tagline, price, portrait } = data;
     const picture = `assets/photographers/photographersIDPhotos/${portrait}`;
-
     function getUserCardDOM() {
         const article = document.createElement("article");
         const a = document.createElement ("a")
@@ -12,7 +10,7 @@ function photographerFactory(data) {
         const pTagline = document.createElement("p");
         const pPrice = document.createElement("p");
         a.setAttribute("id", name);
-        a.href=`./photographer.html?id=${name.replace(/ /g, "_")}`
+        a.href=`./photographer.html?id=${id}`
         a.classList.add("photographer");
         img.setAttribute("src", picture, "alt", )
         h2.textContent = name;
@@ -49,7 +47,10 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM, getUserInfo }
 }
 
- function mediaFactory(data){
-    const { picture, video } = data;
-    
+ function mediaFactory(data, name){
+    const { id, photographerId, title, image, likes, date, price } = data;
+    const  picture = "assets/photographers/"+name+"/"+image;
+    console.log(data);
+
+    return {picture}
  }
