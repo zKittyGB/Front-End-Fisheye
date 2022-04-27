@@ -118,10 +118,34 @@ a:link {
     margin-left: 40px;
 }
 
+.photograph-gallerie {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    margin-left: 100px;
+    margin-right: 100px;
+}
 .photograph-photo img {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 40px;
+}
+
+.photograph-gallerie img {
+    height: 350px;
+    width: 350px;
+    object-fit: cover;
+    margin-right:0px;
+    margin-bottom:40px;
+}
+
+.photograph-gallerie video {
+    height:350px;
+    width: 350px;
+    object-fit: cover;
+    margin-right: 0px;
+    margin-bottom:80px;
 }
