@@ -40,13 +40,15 @@ async function displayGallerie(photographers, media){
     });
 
     function getPhotographerMedia(){
-        let photographerMedia = [];
+        const gallerieSection = document.querySelector(".photograph-gallerie");
         media.forEach((newMedia) => {
             if (newMedia.photographerId == id){
-                photographerMedia.push(newMedia);
+                const photographerMedia = mediaFactory(newMedia, name);
+                const mediaGallerie = photographerMedia.getMediaGallerie();
+                gallerieSection.appendChild(mediaGallerie);
+                console.log(photographerMedia)
             }    
         });
-        const photographerGallerie = mediaFactory(photographerMedia, name);
     }
     getPhotographerMedia();
 }
