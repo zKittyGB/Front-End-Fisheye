@@ -4,31 +4,52 @@ function photographerFactory(data) {
     const picture = `assets/photographers/photographersIDPhotos/${portrait}`;
 
     function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const div = document.createElement ('div')
-        div.setAttribute("id", name);
-        div.classList.add("photographer");
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture, "alt", name)
-        img.setAttribute("alt", name)
-        const h2 = document.createElement( 'h2' );
+        const article = document.createElement("article");
+        const a = document.createElement ("a")
+        const img = document.createElement("img");
+        const h2 = document.createElement("h2");
+        const pVille = document.createElement("p");
+        const pTagline = document.createElement("p");
+        const pPrice = document.createElement("p");
+        a.setAttribute("id", name);
+        a.href=`./photographer.html?id=${name.replace(/ /g, "_")}`
+        a.classList.add("photographer");
+        img.setAttribute("src", picture, "alt", )
         h2.textContent = name;
-        const pVille = document.createElement( 'p' );
-        pVille.classList.add('pVille')
+        pVille.classList.add("pVille")
         pVille.textContent = `${city}, ${country}`;
-        const pTagline = document.createElement( 'p' );
-        pTagline.classList.add('pTagline')
+        pTagline.classList.add("pTagline")
         pTagline.textContent = tagline;
-        const pPrice = document.createElement( 'p' );
-        pPrice.classList.add('pPrice')
+        pPrice.classList.add("pPrice")
         pPrice.textContent = `${price}€/jour`;
-        article.appendChild(div);
-        div.appendChild(img);
-        div.appendChild(h2);
+        article.appendChild(a);
+        a.appendChild(img);
+        a.appendChild(h2);
         article.appendChild(pVille);
         article.appendChild(pTagline);
         article.appendChild(pPrice);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getUserInfo() {
+        const article = document.createElement("article");
+        const h1 = document.createElement("h1");
+        const pVille = document.createElement("p");
+        const pTagline = document.createElement("p");
+        h1.textContent = name;
+        pVille.classList.add("pVille")
+        pVille.textContent = `${city}, ${country}`;
+        pTagline.classList.add("pTagline")
+        pTagline.textContent = tagline;
+        article.appendChild(h1);
+        article.appendChild(pVille);
+        article.appendChild(pTagline);
+        return (article);
+    }
+    return { name, picture, getUserCardDOM, getUserInfo }
 }
+
+ function mediaFactory(data){
+    const { picture, video } = data;
+    
+ }
