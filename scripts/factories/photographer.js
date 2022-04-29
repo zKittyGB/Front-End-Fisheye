@@ -30,6 +30,7 @@ function photographerFactory(data) {
         return (article);
     }
 
+    //factory pour photographer.html
     function getUserInfo() {
         const article = document.createElement("article");
         const h1 = document.createElement("h1");
@@ -45,28 +46,57 @@ function photographerFactory(data) {
         article.appendChild(pTagline);
         return (article);
     }
-    return { name, picture, getUserCardDOM, getUserInfo }
+    //retourne lr prix journallier du photographe
+    function getPriceDay(){
+        const photographerPriceDay = document.createElement("p");
+        photographerPriceDay.textContent = `${price}€ / jour`
+        return (photographerPriceDay);
+    }
+    return { name, picture, getUserCardDOM, getUserInfo, getPriceDay }
 }
-
- function mediaFactory(data, name){
+// factory création des medias
+function mediaFactory(data, name,){
     const { id, photographerId, title, image, video, likes, date, price } = data;
-    const picture = "assets/photographers/"+name+"/"+image;
-    const movie = "assets/photographers/"+name+"/"+video;
-
+    const picture = "assets/photographers/"+name.replace(/ /g, "_")+"/"+image;
+    const movie = "assets/photographers/"+name.replace(/ /g, "_")+"/"+video;
+    //gestion image ou video
     function getMediaGallerie(){
         const article = document.createElement("article");
+        const divTitle = document.createElement("div");
+        const pTitre = document.createElement("p");
+        const divPrice = document.createElement("div");
+        const nbrLike = document.createElement("p");
+        const heart = document.createElement("i");
+        const ul = document.createElement("ul");
+        const li = document.createElement("li");
+        nbrLike.setAttribute("class", "nbrLike");
+        divTitle.setAttribute("class", "photoTitle");
+        divPrice.setAttribute("class", "divPrice");
+        heart.setAttribute("class", "fa-solid fa-heart");
         if(image != undefined)
         {
             const img = document.createElement("img");
             img.setAttribute("src", picture.replace(/ /g, "_"), "alt",title)
+            img.setAttribute("onclick", "lightbox(this.id)")
+            img.setAttribute("id",`${id}`);
             article.appendChild(img);
         }
         else{
             const video = document.createElement("video");
             video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
+            video.setAttribute("onclick", "lightbox(this.id))")
+            video.setAttribute("id",`${id}`);
             article.appendChild(video);
         }
+
+        pTitre.textContent = title;
+        nbrLike.textContent = likes;
+        article.appendChild(divTitle);
+        divTitle.appendChild(pTitre);
+        divTitle.appendChild(divPrice);
+        divPrice.appendChild(nbrLike);
+        divPrice.appendChild(heart);
         return (article);
     }
-    return {picture, getMediaGallerie}
+    return {getMediaGallerie}
  }
