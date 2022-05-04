@@ -5,19 +5,20 @@ function displayModal() {
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
-    const mediaList = document.getElementById("mediaList");
+    const mediaList = document.getElementById("carrousel");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
+    const carrousel = document.querySelector(".carrousel");
+    const ul = document.querySelector('ul');
+    const li = document.querySelector('li');
     modal.style.display = "none";
-    form.style.visibility ="visible";
-    h2.style.visibility ="visible";
-    //vider les données de la liste du carrousselle à la fermeture
-    var lis = document.querySelectorAll('#mediaList li');
-    for(var i=0; li=lis[i]; i++) {
-    li.parentNode.removeChild(li);
+    form.style.display ="block";
+    h2.style.display ="block";
+    //vider les données de la liste du carroussel à la fermeture
+    carrousel.style.display ="none";
+    ul.removeChild(li);
+    carrousel.removeChild(ul);
 }
-}
-
 // Objet verification values des inputs
 class RetourValue {
     constructor(first, last, email) {

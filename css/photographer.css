@@ -29,7 +29,7 @@
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -199,4 +199,27 @@ form input {
     margin-top: 7px;
     margin-left: 7px;
     color: #901c1c;
+}
+
+.carrousel {
+    width:100%;
+}
+
+li{
+    position: absolute;
+}
+
+ul{
+    margin-left:0;
+    list-style-type:none;
+    display:block;
+    height:600px;
+}
+
+li img {
+    width: 700px;
+    height: 700px;
+    object-fit: cover;
+    margin-left:13%;
+    margin-top:-160px;
 }

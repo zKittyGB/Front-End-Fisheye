@@ -69,6 +69,7 @@ function mediaFactory(data, name,){
         const heart = document.createElement("i");
         const ul = document.createElement("ul");
         const li = document.createElement("li");
+        
         nbrLike.setAttribute("class", "nbrLike");
         divTitle.setAttribute("class", "photoTitle");
         divPrice.setAttribute("class", "divPrice");
@@ -84,7 +85,7 @@ function mediaFactory(data, name,){
         else{
             const video = document.createElement("video");
             video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
-            video.setAttribute("onclick", "lightbox(this.id))")
+            video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);
             article.appendChild(video);
         }
