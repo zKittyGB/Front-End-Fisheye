@@ -70,9 +70,13 @@ function mediaFactory(data, name, item){
         const ul = document.createElement("ul");
         const li = document.createElement("li");
         nbrLike.setAttribute("class", "nbrLike");
+        nbrLike.setAttribute("class", `${title.replace(/ /g, "_")}`);
         divTitle.setAttribute("class", "photoTitle");
         divPrice.setAttribute("class", "divPrice");
         heart.setAttribute("class", "fa-solid fa-heart");
+        heart.setAttribute("id", `${title.replace(/ /g, "_")}`);
+        heart.setAttribute("onclick", `addLike(this.id,${likes})`)
+
         if(image != undefined)
         {
             
@@ -80,6 +84,7 @@ function mediaFactory(data, name, item){
             img.setAttribute("src", picture.replace(/ /g, "_"), "alt",title)
             img.setAttribute("onclick", "lightbox(this.id)")
             img.setAttribute("id",`${id}`);
+            img.setAttribute("class",`${item}`);
             article.appendChild(img);
         }
         else{

@@ -137,6 +137,8 @@ form input {
     justify-content:space-between;
     margin-left: 100px;
     margin-right: 100px;
+    margin-bottom: 50px;
+    
 }
 .photograph-photo img {
     height: 200px;
@@ -178,12 +180,35 @@ form input {
 
 .priceDay {
     position:fixed;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
     right: 10px;
     bottom:0px;
-    width:200px;
+    width:250px;
     height: 45px;
     background-color: #db8876;
     font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.priceDay p{
+    margin-left: 15px;    
+}
+
+.price {
+    margin-right: 15px;
+}
+
+.priceDay i{
+    color: black;    
+    margin-left:4px;
+    margin-top:18px;
+}
+
+.like {
+    display : flex;
+    flex-direction: row;
 }
 
 .nbrLike {
@@ -234,6 +259,7 @@ form input {
 
 
 .close {
+    visibility: hidden;
     position: relative;
     left: 420px;
     top:80px;

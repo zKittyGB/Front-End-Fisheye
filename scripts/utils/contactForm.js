@@ -13,14 +13,11 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
-    const carrousel = document.querySelector(".carrousel");
-    const items = document.querySelector(".items");
+    
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
-    //vider les données de la liste du carroussel à la fermeture
-    carrousel.style.display ="none";
-    carrousel.removeChild(items);
+    
 }
 // Objet verification values des inputs
 class RetourValue {

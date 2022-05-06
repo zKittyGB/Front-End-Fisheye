@@ -1,7 +1,7 @@
 //recuperation de l'id du photographe
 let params = (new URL(document.location)).searchParams;
 let id = params.get("id"); // 
-
+let totalLike ="0";
 async function getPhotographers() {
     //importation des données du json
     const response = await fetch("./data/photographers.json");
@@ -11,7 +11,6 @@ async function getPhotographers() {
 
 // création des infos du photographe
 async function displayData(photographers, name) {
-    const photographerSection = document.querySelector(".photograph-header");
     const photographerInfos = document.querySelector(".photograph-infos");
     const photographerPhoto = document.querySelector(".photograph-photo");
     const priceSection = document.querySelector(".priceDay");
@@ -28,6 +27,7 @@ async function displayData(photographers, name) {
             photographerInfos.appendChild(infoProfil);
             name = photographer.name;
             priceSection.appendChild(photographerPriceDay);
+            photographerPriceDay.setAttribute("class","price")
             h2Modal.textContent = "Contactez-moi " + name;
         }
     });
@@ -50,11 +50,24 @@ async function displayGallerie(photographers, media){
         media.forEach((newMedia) => {
             if (newMedia.photographerId == id){
                 item += 1
+                totalLike = parseInt(totalLike) + parseInt(newMedia.likes);
                 const photographerMedia = mediaFactory(newMedia, name, item);
                 const mediaGallerie = photographerMedia.getMediaGallerie();
                 gallerieSection.appendChild(mediaGallerie); 
             }    
         });
+        const priceSection = document.querySelector(".priceDay");
+        const price = document.querySelector(".price");
+        const p = document.createElement( "p" );
+        const div = document.createElement( "div" );
+        const heart = document.createElement( "i" );
+        heart.setAttribute("class", "fa-solid fa-heart"),
+        // Ajout des likes totaux et du prix dans priceSection
+        priceSection.insertBefore(div, price)
+        div.setAttribute("class", "like")
+        div.appendChild(p);
+        div.appendChild(heart);
+        p.textContent = `${totalLike}`;
     }
     getPhotographerMedia();
 }
