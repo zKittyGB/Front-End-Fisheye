@@ -1,23 +1,26 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
+    const backgroundModal = document.querySelector(".modal");
+    const iLeft = document.querySelector('.fa-angle-left');
+    const iRight = document.querySelector('.fa-angle-right');
+    iLeft.style.display = "none";
+    iRight.style.display = "none";
 	modal.style.display = "block";
+	backgroundModal.style.backgroundColor = "#DB8876";
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
-    const mediaList = document.getElementById("carrousel");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
     const carrousel = document.querySelector(".carrousel");
-    const ul = document.querySelector('ul');
-    const li = document.querySelector('li');
+    const items = document.querySelector(".items");
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
     //vider les données de la liste du carroussel à la fermeture
     carrousel.style.display ="none";
-    ul.removeChild(li);
-    carrousel.removeChild(ul);
+    carrousel.removeChild(items);
 }
 // Objet verification values des inputs
 class RetourValue {

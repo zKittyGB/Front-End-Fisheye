@@ -36,16 +36,26 @@
           <h2></h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
+        <div role="button" class="controls controls-close">
+          <span class="img close">
+            <i
+              aria-hidden="true"
+              class="fa-solid fa-4x fa-xmark"
+              onclick="closeModal()"
+            ></i>
+          </span>
+          <p class="sr-only">close</p>
+        </div>
         <div class="carrousel">
           <div role="button" class="controls controls-left">
             <span class="img prev-image">
-              <i aria-hidden="true" class="fa fa-arrow-circle-left"></i>
+              <i aria-hidden="true" class="fa fa-4x fa-angle-left"></i>
             </span>
             <p class="sr-only">Previous</p>
           </div>
           <div role="button" class="controls controls-right">
             <span class="img next-image">
-              <i aria-hidden="true" class="fa fa-arrow-circle-right"></i>
+              <i aria-hidden="true" class="fa fa-4x fa-angle-right"></i>
             </span>
             <p class="sr-only">Next</p>
           </div>

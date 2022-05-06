@@ -46,9 +46,11 @@ async function displayGallerie(photographers, media){
     // integration du retour de la factory
     function getPhotographerMedia(){
         const gallerieSection = document.querySelector(".photograph-gallerie");
+        let item = -1;
         media.forEach((newMedia) => {
             if (newMedia.photographerId == id){
-                const photographerMedia = mediaFactory(newMedia, name);
+                item += 1
+                const photographerMedia = mediaFactory(newMedia, name, item);
                 const mediaGallerie = photographerMedia.getMediaGallerie();
                 gallerieSection.appendChild(mediaGallerie); 
             }    

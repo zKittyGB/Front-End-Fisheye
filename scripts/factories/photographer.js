@@ -55,7 +55,7 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM, getUserInfo, getPriceDay }
 }
 // factory création des medias
-function mediaFactory(data, name,){
+function mediaFactory(data, name, item){
     const { id, photographerId, title, image, video, likes, date, price } = data;
     const picture = "assets/photographers/"+name.replace(/ /g, "_")+"/"+image;
     const movie = "assets/photographers/"+name.replace(/ /g, "_")+"/"+video;
@@ -69,13 +69,13 @@ function mediaFactory(data, name,){
         const heart = document.createElement("i");
         const ul = document.createElement("ul");
         const li = document.createElement("li");
-        
         nbrLike.setAttribute("class", "nbrLike");
         divTitle.setAttribute("class", "photoTitle");
         divPrice.setAttribute("class", "divPrice");
         heart.setAttribute("class", "fa-solid fa-heart");
         if(image != undefined)
         {
+            
             const img = document.createElement("img");
             img.setAttribute("src", picture.replace(/ /g, "_"), "alt",title)
             img.setAttribute("onclick", "lightbox(this.id)")
