@@ -1,11 +1,42 @@
 async function lightbox(clicked_id){
-    const{media} = await getPhotographers();
-    const id = params.get("id"); // 
-    const carrousel = document.querySelector(".carrousel");
-    const close = document.querySelector(".close");
-    const form = document.querySelector("form");
-    const h2 = document.querySelector(".modal h2");
+    //var global
     const modal = document.querySelector(".modal");
+    const form = document.querySelector("form");
+    const{media} = await getPhotographers();
+    const id = params.get("id"); 
+    const close = document.querySelector(".close");
+    const h2 = document.querySelector(".modal h2");
+
+    //variable essentielle a la co nstruction du carrousel
+    const divCarrousel = document.createElement("div");
+    const divControlsLeft = document.createElement("div");
+    const divControlsRight = document.createElement("div");
+    const spanPrev = document.createElement("span");
+    const  spanNext = document.createElement("span");
+    const iPrev = document.createElement("i")
+    const iNext = document.createElement("i")
+    //création du carrousel
+    modal.insertBefore(divCarrousel, form);
+    divCarrousel.appendChild(divControlsLeft);
+    divCarrousel.appendChild(divControlsRight);
+    divControlsLeft.appendChild(spanPrev);
+    divControlsRight.appendChild(spanNext);
+    spanPrev.appendChild(iPrev);
+    spanNext.appendChild(iNext);
+    divCarrousel.setAttribute("class", "carrousel")
+    divControlsLeft.setAttribute("role", "button")
+    divControlsLeft.setAttribute("class", "controls controls-left")
+    divControlsRight.setAttribute("role", "button")
+    divControlsRight.setAttribute("class", "controls controls-right")
+    spanPrev.setAttribute("class","img prev-image")
+    spanNext.setAttribute("class","img next-image")
+    iPrev.setAttribute("ariaHidden","true")
+    iPrev.setAttribute("class","fa fa-4x fa-angle-left")
+    iNext.setAttribute("ariaHidden","true")
+    iNext.setAttribute("class","fa fa-4x fa-angle-right")
+
+    //variables dependantes de la création du carrousel
+    const carrousel = document.querySelector(".carrousel");
     const carrouselItem = document.createElement("div");
     const iLeft = document.querySelector('.fa-angle-left');
     const iRight = document.querySelector('.fa-angle-right');
@@ -19,6 +50,8 @@ async function lightbox(clicked_id){
     iLeft.style.display = "block";
     iRight.style.display = "block";
     let item = 0;
+
+
     media.forEach((newMedia) => {
         //récuperation de la liste de toutes les sources medias
         if (newMedia.photographerId == id){
@@ -94,6 +127,7 @@ async function lightbox(clicked_id){
             const currentItem = `.item-${currentItemPosition}`;
         
             setNodeAttributes(lastItem, currentItem);
+            console.log(currentItem)
         }
     }
     // gestion d'affichage de la slide
@@ -107,9 +141,8 @@ async function lightbox(clicked_id){
     //vider les données de la liste du carroussel à la fermeture
     close.addEventListener("click", ()=>{
         const carrousel = document.querySelector(".carrousel");
-        const items = document.querySelector(".items");
-        const close = document.querySelector(".close");
-        carrousel.style.display ="none";
+        carrousel.remove();
+      
         close.style.visibility = "hidden";
     });
     // Events

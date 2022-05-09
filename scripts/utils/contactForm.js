@@ -13,11 +13,10 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
-    
+    modal.style.display = "none";
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
-    
 }
 // Objet verification values des inputs
 class RetourValue {
