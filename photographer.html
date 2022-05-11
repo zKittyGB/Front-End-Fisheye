@@ -41,9 +41,11 @@
               />Popularité</label
             >
           </li>
+          <div class="border-li"></div>
           <li class="liste tri-date">
             <label><input id="date" type="radio" name="tri" />Date</label>
           </li>
+          <div class="border-li"></div>
           <li class="liste tri-titre">
             <label><input id="titre" type="radio" name="tri" />Titre</label>
           </li>
@@ -92,14 +94,12 @@
           </div>
           <div class="error errorEmail"></div>
           <div class="formData">
-            <label for="messasge">Votre message</label>
+            <label for="message">Votre message</label>
             <input
               class="text-control"
-              type="text"
+              type="textarea"
               id="message"
               name="message"
-              style="height: 200px"
-              ;
             />
           </div>
           <button class="contact_button">Envoyer</button>
