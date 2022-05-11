@@ -28,7 +28,28 @@
         <div class="photograph-photo"></div>
       </div>
     </main>
-    <div class="photograph-gallerie"></div>
+    <div class="main__photograph--gallerie">
+      <div class="tri">
+        <p>Trier par</p>
+        <ul name="tri-type">
+          <li class="liste tri-popularite">
+            <label
+              ><input
+                id="popularite"
+                type="radio"
+                name="tri"
+              />Popularité</label
+            >
+          </li>
+          <li class="liste tri-date">
+            <label><input id="date" type="radio" name="tri" />Date</label>
+          </li>
+          <li class="liste tri-titre">
+            <label><input id="titre" type="radio" name="tri" />Titre</label>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="priceDay"></div>
     <div id="contact_modal">
       <div class="modal">

@@ -1,10 +1,6 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const backgroundModal = document.querySelector(".modal");
-    const iLeft = document.querySelector('.fa-angle-left');
-    const iRight = document.querySelector('.fa-angle-right');
-    iLeft.style.display = "none";
-    iRight.style.display = "none";
 	modal.style.display = "block";
 	backgroundModal.style.backgroundColor = "#DB8876";
 }
@@ -17,6 +13,11 @@ function closeModal() {
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
+    const carrousel = document.querySelector(".carrousel");
+    console.log(carrousel)
+    if(carrousel){
+        carrousel.remove();
+    }
 }
 // Objet verification values des inputs
 class RetourValue {

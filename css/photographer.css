@@ -130,6 +130,50 @@ form input {
     margin-left: 40px;
 }
 
+.tri{
+    margin-left:100px;
+    display:flex;
+    flex-direction: row;
+    margin-bottom:10px;
+}
+
+.liste{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 150px;
+    height: 35px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+[type="radio"]:not(:checked){
+	/* Cache la checkbox sans
+	   la rendre invisible aux
+	   lecteurs d'écran */
+	position: absolute;
+	left: 0;
+	opacity: 0.01;
+}
+
+[type="radio"]:checked {
+	/* Cache la checkbox sans
+	   la rendre invisible aux
+	   lecteurs d'écran */
+	position: absolute;
+	left: 0;
+	opacity: 0.01;
+}
+
+
+
 .photograph-gallerie {
     display: flex;
     flex-direction: row;

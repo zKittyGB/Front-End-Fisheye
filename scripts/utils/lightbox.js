@@ -50,9 +50,47 @@ async function lightbox(clicked_id){
     iLeft.style.display = "block";
     iRight.style.display = "block";
     let item = 0;
-
-
-    media.forEach((newMedia) => {
+    const popularite = document.querySelector("#popularite")
+    const date = document.querySelector("#date")
+    const titre = document.querySelector("#titre")
+    let mediaSort ="";
+    if(popularite.checked){
+        mediaSort = media.sort(function compare(a,b){
+            if (a.likes < b.likes){
+                return -1;
+            }
+            if(a.likes > b.likes){
+                return +1;
+            }
+            return 0;
+        });
+    }
+    if(date.checked){
+        mediaSort = media.sort(function compare(a,b){
+            if (a.date < b.date){
+                return -1;
+            }
+            if(a.date > b.date){
+                return +1;
+            }
+            return 0;
+        });
+    }
+    if(titre.checked){
+        mediaSort = media.sort(function compare(a,b){
+            if (a.title < b.title){
+                return -1;
+            }
+            if(a.title > b.title){
+                return +1;
+            }
+            return 0;
+        });
+    }
+    else{
+        mediaSort= media;
+    }
+    mediaSort.forEach((newMedia) => {
         //récuperation de la liste de toutes les sources medias
         if (newMedia.photographerId == id){
             let  {src} = document.getElementById(`${newMedia.id}`);
@@ -97,18 +135,15 @@ async function lightbox(clicked_id){
     // slide suivante
     function goToNextSlide() {
         if (currentItemPosition + 1 >=  carrouselItems.length) {  
-            console.log(currentItemPosition) 
             const lastItem = `.item-${currentItemPosition}`;  
             currentItemPosition = 0;
             const currentItem = `.item-${currentItemPosition}`;
-            console.log(currentItemPosition)
             setNodeAttributes(lastItem, currentItem);
         } else {
             currentItemPosition =  currentItemPosition+1;
             const lastItem = `.item-${currentItemPosition - 1}`;
             const currentItem = `.item-${currentItemPosition}`;
             setNodeAttributes(lastItem, currentItem);
-            console.log(currentItemPosition)
         }
     }
     // slide précédente
@@ -127,7 +162,6 @@ async function lightbox(clicked_id){
             const currentItem = `.item-${currentItemPosition}`;
         
             setNodeAttributes(lastItem, currentItem);
-            console.log(currentItem)
         }
     }
     // gestion d'affichage de la slide
@@ -138,13 +172,7 @@ async function lightbox(clicked_id){
         currentImg.style.display ="block";
     }
 
-    //vider les données de la liste du carroussel à la fermeture
-    close.addEventListener("click", ()=>{
-        const carrousel = document.querySelector(".carrousel");
-        carrousel.remove();
-      
-        close.style.visibility = "hidden";
-    });
+
     // Events
     prevBtn.addEventListener("click",goToPreviousSlide);
     nextBtn.addEventListener("click",goToNextSlide);    

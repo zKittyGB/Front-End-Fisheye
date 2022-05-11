@@ -67,8 +67,6 @@ function mediaFactory(data, name, item){
         const divPrice = document.createElement("div");
         const nbrLike = document.createElement("p");
         const heart = document.createElement("i");
-        const ul = document.createElement("ul");
-        const li = document.createElement("li");
         nbrLike.setAttribute("class", "nbrLike");
         nbrLike.setAttribute("class", `${title.replace(/ /g, "_")}`);
         divTitle.setAttribute("class", "photoTitle");
@@ -78,8 +76,7 @@ function mediaFactory(data, name, item){
         heart.setAttribute("onclick", `addLike(this.id,${likes})`)
 
         if(image != undefined)
-        {
-            
+        { 
             const img = document.createElement("img");
             img.setAttribute("src", picture.replace(/ /g, "_"), "alt",title)
             img.setAttribute("onclick", "lightbox(this.id)")
