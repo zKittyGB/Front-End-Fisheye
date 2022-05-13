@@ -22,19 +22,19 @@
     <main id="main">
       <div class="photograph-header">
         <div class="photograph-infos"></div>
-        <button class="contact_button" onclick="displayModal()">
+        <button role="button" aria-label="Contact Me" class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
         <div class="photograph-photo"></div>
       </div>
     </main>
     <div class="main__photograph--gallerie">
-      <div class="arrowMenu"><i class="fa-solid fa-angle-up"></i></div>
+      <div class="arrowMenu"><i class="fa-solid fa-angle-up" role="buton" aria-labelledby="order-by"></i></div>
       <div class="menu-extension-red-square"></div>
       <!-- cache le margin du ul -->
       <div class="tri">
         <p>Trier par</p>
-        <ul name="tri-type">
+        <ul name="tri-type" id="order-by">
           <li class="liste tri-date">
             <label><input id="date" type="radio" name="tri" />Date</label>
           </li>
@@ -60,9 +60,9 @@
       <div class="modal">
         <header>
           <h2></h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" />
         </header>
-        <div role="button" class="controls controls-close">
+        <div role="button" class="controls controls-close" aria-label="Contact Me">
           <span class="img close">
             <i
               aria-hidden="true"
@@ -72,7 +72,6 @@
           </span>
           <p class="sr-only">close</p>
         </div>
-
         <form
           novalidate
           name="contact"
@@ -83,25 +82,25 @@
         >
           <div class="formData">
             <label for="first">Prénom</label>
-            <input class="text-control" type="text" id="first" name="first" />
+            <input class="text-control" type="text" id="first" name="first" aria-labelledby="first" />
           </div>
           <div class="error errorFirst"></div>
           <div class="formData">
             <label for="last">Nom</label>
-            <input class="text-control" type="text" id="last" name="last" />
+            <input class="text-control" type="text" id="last" name="last" aria-labelledby="last" />
           </div>
           <div class="error errorLast"></div>
           <div class="formData">
             <label for="email">Email</label>
-            <input class="text-control" type="mail" id="email" name="email" />
+            <input class="text-control" type="mail" id="email" name="email" aria-labelledby="email" />
           </div>
           <div class="error errorEmail"></div>
           <div class="formData">
             <label for="message">Votre message</label>
-            <input class="text-control" id="message" type="textarea">
+            <input class="text-control" id="message" type="textarea" aria-labelledby="message">
             </input>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="Send">Envoyer</button>
         </form>
       </div>
     </div>
