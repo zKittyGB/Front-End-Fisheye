@@ -29,9 +29,16 @@
       </div>
     </main>
     <div class="main__photograph--gallerie">
+      <div class="arrowMenu"><i class="fa-solid fa-angle-up"></i></div>
+      <div class="menu-extension-red-square"></div>
+      <!-- cache le margin du ul -->
       <div class="tri">
         <p>Trier par</p>
         <ul name="tri-type">
+          <li class="liste tri-date">
+            <label><input id="date" type="radio" name="tri" />Date</label>
+          </li>
+          <div class="border-li border-top"></div>
           <li class="liste tri-popularite">
             <label
               ><input
@@ -41,11 +48,7 @@
               />Popularité</label
             >
           </li>
-          <div class="border-li"></div>
-          <li class="liste tri-date">
-            <label><input id="date" type="radio" name="tri" />Date</label>
-          </li>
-          <div class="border-li"></div>
+          <div class="border-li border-bottom"></div>
           <li class="liste tri-titre">
             <label><input id="titre" type="radio" name="tri" />Titre</label>
           </li>
@@ -95,12 +98,8 @@
           <div class="error errorEmail"></div>
           <div class="formData">
             <label for="message">Votre message</label>
-            <input
-              class="text-control"
-              type="textarea"
-              id="message"
-              name="message"
-            />
+            <input class="text-control" id="message" type="textarea">
+            </input>
           </div>
           <button class="contact_button">Envoyer</button>
         </form>

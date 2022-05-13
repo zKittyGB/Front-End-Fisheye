@@ -55,6 +55,7 @@ async function displayData(photographers, name) {
     const p = document.createElement( "p" );
     const div = document.createElement( "div" );
     const heart = document.createElement( "i" );
+    const divTwoLastMesdia = document.createElement("div");
     // bloque l'incrémentation de plusieurs "like totaux" au clic des boutons tris
     if(!document.querySelector('.like')){
     heart.setAttribute("class", "fa-solid fa-heart")
@@ -64,6 +65,23 @@ async function displayData(photographers, name) {
     div.appendChild(p);
     div.appendChild(heart);
     p.textContent = `${totalLike}`;
+    }
+    // colle les dernier medias à gauche
+    const lastImg = document.querySelector(`.article-${item}`) 
+    const beforeLastImg = document.querySelector(`.article-${item-1}`)
+    if(item >= 9){
+        gallerieSection.appendChild(divTwoLastMesdia);
+        divTwoLastMesdia.setAttribute("class","twoLastMedia")
+        divTwoLastMesdia.appendChild(beforeLastImg)
+        divTwoLastMesdia.appendChild(lastImg)
+        if(item >= 10){
+            const secondBeforeLastImg = document.querySelector(`.article-${item-2}`)
+            divTwoLastMesdia.appendChild(secondBeforeLastImg)
+            if(item >= 11){
+                const thirdBeforeLastImg = document.querySelector(`.article-${item-3}`)
+                divTwoLastMesdia.appendChild(thirdBeforeLastImg)
+            }
+        }
     }
 }
 
@@ -84,11 +102,22 @@ async function displayGallerie(photographers, media){
         const radioPopularite = document.querySelector("#popularite")
         const radioDate = document.querySelector("#date")
         const radioTitre = document.querySelector("#titre")
-        const like = document.querySelector(".like")
-        const price = document.querySelector(".price")
+        const ulTri = document.querySelector(".tri ul")
+        const borderTop = document.querySelector(".border-top")
+        const borderBottom = document.querySelector(".border-bottom")
+        const populariteLi = document.querySelector(".tri-popularite")
+        const dateLi = document.querySelector(".tri-date")
+        const titreLi = document.querySelector(".tri-titre")
         popularite.addEventListener("click", ()=>{
             const gallerieSection = document.querySelector(".photograph-gallerie");
-            radioPopularite.checked ="true";
+            //replacer le menu click en haute position
+            ulTri.insertBefore(dateLi,ulTri.firstChild)
+            ulTri.insertBefore(borderBottom,ulTri.firstChild)
+            ulTri.insertBefore(titreLi,ulTri.firstChild)
+            ulTri.insertBefore(borderTop,ulTri.firstChild)
+            ulTri.insertBefore(populariteLi,ulTri.firstChild)
+
+            radioPopularite.checked = true;
             if(gallerieSection){
                 gallerieSection.remove();
             }
@@ -105,6 +134,12 @@ async function displayGallerie(photographers, media){
         });
         date.addEventListener("click", ()=>{
             const gallerieSection = document.querySelector(".photograph-gallerie");
+            //replacer le menu click en haute position
+            ulTri.insertBefore(populariteLi,ulTri.firstChild)
+            ulTri.insertBefore(borderBottom,ulTri.firstChild)
+            ulTri.insertBefore(titreLi,ulTri.firstChild)
+            ulTri.insertBefore(borderTop,ulTri.firstChild)
+            ulTri.insertBefore(dateLi,ulTri.firstChild)
             radioDate.checked ="true";
             if(gallerieSection){
                 gallerieSection.remove();
@@ -122,6 +157,13 @@ async function displayGallerie(photographers, media){
         });
         titre.addEventListener("click", ()=>{
             const gallerieSection = document.querySelector(".photograph-gallerie");
+            //replacer le menu click en haute position
+            ulTri.insertBefore(populariteLi,ulTri.firstChild)
+            ulTri.insertBefore(borderBottom,ulTri.firstChild)
+            ulTri.insertBefore(dateLi,ulTri.firstChild)
+            ulTri.insertBefore(borderTop,ulTri.firstChild)
+            ulTri.insertBefore(titreLi,ulTri.firstChild)
+
             radioTitre.checked ="true";
             if(gallerieSection){
                 gallerieSection.remove();
@@ -138,8 +180,37 @@ async function displayGallerie(photographers, media){
             getPhotographerMedia(newMedia, name)
         });
     }
-   tri();
+    //afficher / cacher le menu trier par
+    function triMenuShow(){
+        const liste = document.querySelectorAll(".liste")
+        const arrowMenu = document.querySelector(".fa-angle-up")
+        const ulTri = document.querySelector(".tri ul")
+        const borderTop = document.querySelector(".border-top")
+        const borderBottom = document.querySelector(".border-bottom")
+        //met à jour la reference d'ultri en cas de changement de type de tri
+     
+            arrowMenu.addEventListener("mouseenter", ()=>{
+                liste.forEach((newListe)=>{
+                    newListe.style.visibility ="visible";
+                });
+                borderBottom.style.visibility= "visible"
+                borderTop.style.visibility= "visible"
+                ulTri.style.backgroundColor= "#901c1c"
+            });
+            ulTri.addEventListener("mouseleave", ()=>{
+                liste.forEach((newListe)=>{
+                    newListe.style.visibility ="hidden"
+                    ulTri.firstElementChild.style.visibility="visible"
+                });
+                borderBottom.style.visibility= "hidden"
+                borderTop.style.visibility= "hidden"
+                ulTri.style.backgroundColor= ""
+            });
+    }
+    triMenuShow();
+    tri();
 }
+
 
 async function init() {
     // Récupère les datas des photographes
@@ -148,5 +219,4 @@ async function init() {
     displayData(photographers);
     displayGallerie(photographers, media);
 };
-
 init(); 

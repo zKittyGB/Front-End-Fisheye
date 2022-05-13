@@ -83,6 +83,7 @@ function mediaFactory(data, name, item){
             img.setAttribute("id",`${id}`);
             img.setAttribute("class",`${item}`);
             article.appendChild(img);
+            article.setAttribute("class",`article-${item}`)
         }
         else{
             const video = document.createElement("video");
@@ -90,6 +91,7 @@ function mediaFactory(data, name, item){
             video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);
             article.appendChild(video);
+            article.setAttribute("class",`article-${item}`)
         }
 
         pTitre.textContent = title;

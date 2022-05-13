@@ -54,7 +54,9 @@ async function lightbox(clicked_id){
     const date = document.querySelector("#date")
     const titre = document.querySelector("#titre")
     let mediaSort ="";
+    //réorganisation du carrousel en fonction du tri selectionné
     if(popularite.checked){
+        console.log("pwet1")
         mediaSort = media.sort(function compare(a,b){
             if (a.likes < b.likes){
                 return -1;
