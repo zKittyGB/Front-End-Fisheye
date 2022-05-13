@@ -22,13 +22,15 @@ async function displayData(photographers, name) {
             const photoProfil = photographerModel.picture;
             const infoProfil = photographerModel.getUserInfo();
             const img = document.createElement( "img" );
-            img.setAttribute("src", photoProfil, "alt",);
+            img.setAttribute("src", photoProfil);
             photographerPhoto.appendChild(img);
             photographerInfos.appendChild(infoProfil);
             name = photographer.name;
+            img.setAttribute("alt", `${name}`);
             priceSection.appendChild(photographerPriceDay);
             photographerPriceDay.setAttribute("class","price")
-            h2Modal.textContent = "Contactez-moi " + name;
+            h2Modal.textContent = "Contactez-moi " + name.replace(/ /g, "_");
+            h2Modal.setAttribute("id",`Contact_${name}`)
         }
     });
 };
@@ -47,9 +49,9 @@ async function displayData(photographers, name) {
             const photographerMedia = mediaFactory(newMedia, name, item);
             const mediaGallerie = photographerMedia.getMediaGallerie();
             gallerieSection.appendChild(mediaGallerie); 
+
         }    
     });
-    
     const priceSection = document.querySelector(".priceDay");
     const price = document.querySelector(".price");
     const p = document.createElement( "p" );

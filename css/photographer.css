@@ -186,6 +186,7 @@ form div {
     margin-top:22px;
     color:white;
     z-index:2;
+    cursor: pointer;
 }
 
 .border-li{
@@ -245,6 +246,7 @@ form div {
     margin-right:0px;
     margin-bottom:0px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .photograph-gallerie video {
@@ -314,6 +316,7 @@ form div {
     margin-top: 7px;
     margin-left: 7px;
     color: #901c1c;
+    cursor: pointer;
 }
 
 .carrousel {

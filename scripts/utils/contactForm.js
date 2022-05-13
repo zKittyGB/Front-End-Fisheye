@@ -1,7 +1,10 @@
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const backgroundModal = document.querySelector(".modal");
-	modal.style.display = "block";
+    let name = document.querySelector(".photograph-infos h1").innerHTML
+    console.log(name.innerHTML)
+    modal.style.display = "block";
+    modal.setAttribute("aria-labelledBy",`Contactme_${name.replace(/ /g, "_")}`)
 	backgroundModal.style.backgroundColor = "#DB8876";
 }
 

@@ -24,15 +24,18 @@ async function lightbox(clicked_id){
     spanPrev.appendChild(iPrev);
     spanNext.appendChild(iNext);
     divCarrousel.setAttribute("class", "carrousel")
+    divCarrousel.setAttribute("aria-label", "image closeup view")
     divControlsLeft.setAttribute("role", "button")
     divControlsLeft.setAttribute("class", "controls controls-left")
     divControlsRight.setAttribute("role", "button")
     divControlsRight.setAttribute("class", "controls controls-right")
     spanPrev.setAttribute("class","img prev-image")
     spanNext.setAttribute("class","img next-image")
-    iPrev.setAttribute("ariaHidden","true")
+    iPrev.setAttribute("aria-hidden","true")
+    iPrev.setAttribute("aria-label","Previous image")
     iPrev.setAttribute("class","fa fa-4x fa-angle-left")
-    iNext.setAttribute("ariaHidden","true")
+    iNext.setAttribute("aria-hidden","true")
+    iNext.setAttribute("aria-label","Next image")
     iNext.setAttribute("class","fa fa-4x fa-angle-right")
 
     //variables dependantes de la création du carrousel
@@ -42,6 +45,7 @@ async function lightbox(clicked_id){
     const iRight = document.querySelector('.fa-angle-right');
     //cacher le formulaire de la modal
     close.style.visibility = "visible";
+    close.setAttribute("aria-label","Close Dialog")
     form.style.display ="none";
     h2.style.display ="none";
     carrousel.style.display="inline-flex";
@@ -110,11 +114,13 @@ async function lightbox(clicked_id){
                 div.appendChild(img);
                 img.setAttribute("src",`${src}`);
                 img.setAttribute("class",`${item}`);
+                img.setAttribute("alt",`${newMedia.title}`);
             }
             else{
                 div.appendChild(video);
                 video.setAttribute("src",`${src}`);
                 video.setAttribute("class",`${item}`);
+                video.setAttribute("alt",`${newMedia.title}`);
             }
             div.setAttribute("class",`carrousel-item item-${item} photoId-${newMedia.id}`);
             div.appendChild(p);

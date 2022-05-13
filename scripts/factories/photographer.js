@@ -24,6 +24,8 @@ function photographerFactory(data) {
         article.appendChild(a);
         a.appendChild(img);
         a.appendChild(h2);
+        a.setAttribute("ariaLabel",`${name}`);
+        a.autofocus = true
         article.appendChild(pVille);
         article.appendChild(pTagline);
         article.appendChild(pPrice);
@@ -72,6 +74,7 @@ function mediaFactory(data, name, item){
         divTitle.setAttribute("class", "photoTitle");
         divPrice.setAttribute("class", "divPrice");
         heart.setAttribute("class", "fa-solid fa-heart");
+        heart.setAttribute("aria-label", "likes");
         heart.setAttribute("id", `${title.replace(/ /g, "_")}`);
         heart.setAttribute("onclick", `addLike(this.id,${likes})`)
 
@@ -93,10 +96,10 @@ function mediaFactory(data, name, item){
             article.appendChild(video);
             article.setAttribute("class",`article-${item}`)
         }
-
         pTitre.textContent = title;
         nbrLike.textContent = likes;
         article.appendChild(divTitle);
+        article.setAttribute("aria-label",`${title},closeup view`)
         divTitle.appendChild(pTitre);
         divTitle.appendChild(divPrice);
         divPrice.appendChild(nbrLike);
