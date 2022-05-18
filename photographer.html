@@ -29,7 +29,7 @@
       </div>
     </main>
     <div class="main__photograph--gallerie">
-      <div class="arrowMenu"><i class="fa-solid fa-angle-up" role="buton" aria-labelledby="order-by"></i></div>
+      <div class="arrowMenu"><i tabindex="0" class="fa-solid fa-angle-up" role="buton" aria-hidden="true"  aria-labelledby="order-by"></i></div>
       <div class="menu-extension-red-square"></div>
       <!-- cache le margin du ul -->
       <div class="tri">
@@ -39,17 +39,17 @@
             <label><input id="date" type="radio" name="tri" />Date</label>
           </li>
           <div class="border-li border-top"></div>
-          <li class="liste tri-popularite">
+          <li  class="liste tri-popularite">
             <label
-              ><input
+              ><input 
                 id="popularite"
                 type="radio"
-                name="tri"
+                name="tri"  
               />Popularité</label
             >
           </li>
           <div class="border-li border-bottom"></div>
-          <li class="liste tri-titre">
+          <li  class="liste tri-titre">
             <label><input id="titre" type="radio" name="tri" />Titre</label>
           </li>
         </ul>
@@ -73,6 +73,7 @@
           <p class="sr-only">close</p>
         </div>
         <form
+          aria-labelledby="first last email message"
           novalidate
           name="contact"
           action="photographer.html"

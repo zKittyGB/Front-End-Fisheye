@@ -128,7 +128,7 @@ async function lightbox(clicked_id){
             p.setAttribute("class", "photo-title-lightbox")
             div.style.display="none";
             item +=1;  
-        };
+        }
     })
     //var carrousel
     const photoClicked = document.querySelector(`.photoId-${clicked_id}`);
@@ -177,15 +177,43 @@ async function lightbox(clicked_id){
         const lastImg = document.querySelector(`${lastItem}`);
         const currentImg = document.querySelector(`${currentItem}`);
         lastImg.style.display ="none";
+        lastImg.setAttribute("aria-hidden","true");
         currentImg.style.display ="block";
+        currentImg.setAttribute("aria-hidden","false");
     }
 
+    function keyDown(e){
+        const carrousel = document.querySelector(".carrousel");
+        const keyCode = e.code
+        if(carrousel){
+            if(keyCode === "ArrowRight"){
+                goToNextSlide()
+            } 
+            else if(keyCode === "ArrowLeft"){
+                goToPreviousSlide()
+            }
+            else if(keyCode === "Escape"){
+                closeModal()
+            }
+        }
+    }
+    //gestion du clavier dans le carrousel
+    document.addEventListener("keydown",keyDown)
 
+    close.addEventListener("clic", ()=>{   
+        document.removeEventListener("keydown", keyDown);
+    })
+    document.addEventListener("keydown",(e)=>{
+        if(e.code === "Escape"){
+            document.removeEventListener("keydown", keyDown);    
+        }
+    })  
     // Events
     prevBtn.addEventListener("click",goToPreviousSlide);
     nextBtn.addEventListener("click",goToNextSlide);    
-    
+
 }
+
 
 
 

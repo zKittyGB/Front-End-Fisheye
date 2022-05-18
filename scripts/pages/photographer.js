@@ -189,8 +189,15 @@ async function displayGallerie(photographers, media){
         const ulTri = document.querySelector(".tri ul")
         const borderTop = document.querySelector(".border-top")
         const borderBottom = document.querySelector(".border-bottom")
-        //met à jour la reference d'ultri en cas de changement de type de tri
-     
+        //met à jour la reference d'ultri en cas de changement de type de tri        
+            arrowMenu.addEventListener("focus", ()=>{
+                liste.forEach((newListe)=>{
+                    newListe.style.visibility ="visible";
+                });
+                borderBottom.style.visibility= "visible"
+                borderTop.style.visibility= "visible"
+                ulTri.style.backgroundColor= "#901c1c"
+            });
             arrowMenu.addEventListener("mouseenter", ()=>{
                 liste.forEach((newListe)=>{
                     newListe.style.visibility ="visible";
@@ -199,6 +206,7 @@ async function displayGallerie(photographers, media){
                 borderTop.style.visibility= "visible"
                 ulTri.style.backgroundColor= "#901c1c"
             });
+
             ulTri.addEventListener("mouseleave", ()=>{
                 liste.forEach((newListe)=>{
                     newListe.style.visibility ="hidden"

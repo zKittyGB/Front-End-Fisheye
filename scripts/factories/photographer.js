@@ -58,7 +58,7 @@ function photographerFactory(data) {
 }
 // factory création des medias
 function mediaFactory(data, name, item){
-    const { id, photographerId, title, image, video, likes, date, price } = data;
+    const { id, title, image, video, likes} = data;
     const picture = "assets/photographers/"+name.replace(/ /g, "_")+"/"+image;
     const movie = "assets/photographers/"+name.replace(/ /g, "_")+"/"+video;
     //gestion image ou video

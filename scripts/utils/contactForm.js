@@ -2,7 +2,6 @@ function displayModal() {
     const modal = document.getElementById("contact_modal");
     const backgroundModal = document.querySelector(".modal");
     let name = document.querySelector(".photograph-infos h1").innerHTML
-    console.log(name.innerHTML)
     modal.style.display = "block";
     modal.setAttribute("aria-labelledBy",`Contactme_${name.replace(/ /g, "_")}`)
 	backgroundModal.style.backgroundColor = "#DB8876";
@@ -12,16 +11,20 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
+    const carrousel = document.querySelector(".carrousel");
     modal.style.display = "none";
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
-    const carrousel = document.querySelector(".carrousel");
+    //désactive le listener de touche clavier
     console.log(carrousel)
-    if(carrousel){
-        carrousel.remove();
-    }
 }
+document.addEventListener("keydown",(e)=>{
+    const keyCode = e.code
+    if(keyCode === "Escape"){
+            closeModal()
+        }
+})  
 // Objet verification values des inputs
 class RetourValue {
     constructor(first, last, email) {
@@ -35,16 +38,18 @@ function validate(event) {
     let first = document.forms["contact"]["first"];
     let last = document.forms["contact"]["last"];
     let  email = document.forms["contact"]["email"];
+    let  message = document.forms["contact"]["message"];
     let errorFirst = document.querySelector('.errorFirst');
     let errorLast = document.querySelector('.errorLast');
     let errorEmail = document.querySelector('.errorEmail');
     let returnFalse = false;
-    const regexMail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const regexMail = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
     // création d'une instance de retourLog pour recuperer la valeur de chaque elements
     const retourLog = new RetourValue(
       first.value,
       last.value,
       email.value
+      message.value
     );
     // cancel la redirection au clic submit
     event.preventDefault();
