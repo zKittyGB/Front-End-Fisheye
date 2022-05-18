@@ -25,10 +25,11 @@ function closeModal() {
 
 // Objet verification values des inputs
 class RetourValue {
-    constructor(first, last, email) {
+    constructor(first, last, email, message) {
       this.first = first;
       this.last = last;
       this.email = email;   
+      this.message = message;   
     }
   }
 
