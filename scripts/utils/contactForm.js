@@ -16,7 +16,7 @@ function closeModal() {
     modal.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
-    //désactive le listener de touche clavier
+    //détruit le carrousel
     const items = document.querySelector(".items")
     if(items){
         carrousel.remove()
