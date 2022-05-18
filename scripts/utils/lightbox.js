@@ -60,7 +60,6 @@ async function lightbox(clicked_id){
     let mediaSort ="";
     //réorganisation du carrousel en fonction du tri selectionné
     if(popularite.checked){
-        console.log("pwet1")
         mediaSort = media.sort(function compare(a,b){
             if (a.likes < b.likes){
                 return -1;
@@ -205,7 +204,7 @@ async function lightbox(clicked_id){
     })
     document.addEventListener("keydown",(e)=>{
         if(e.code === "Escape"){
-            document.removeEventListener("keydown", keyDown);    
+            document.removeEventListener("keydown", keyDown);  
         }
     })  
     // Events

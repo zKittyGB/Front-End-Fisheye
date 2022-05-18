@@ -17,14 +17,12 @@ function closeModal() {
     form.style.display ="block";
     h2.style.display ="block";
     //désactive le listener de touche clavier
-    console.log(carrousel)
+    const items = document.querySelector(".items")
+    if(items){
+        carrousel.remove()
+    }
 }
-document.addEventListener("keydown",(e)=>{
-    const keyCode = e.code
-    if(keyCode === "Escape"){
-            closeModal()
-        }
-})  
+
 // Objet verification values des inputs
 class RetourValue {
     constructor(first, last, email) {
@@ -48,7 +46,7 @@ function validate(event) {
     const retourLog = new RetourValue(
       first.value,
       last.value,
-      email.value
+      email.value,
       message.value
     );
     // cancel la redirection au clic submit
@@ -81,7 +79,6 @@ function validate(event) {
     {
         return false;
     }
-    console.log(retourLog);
     closeModal();
     return true;
 }

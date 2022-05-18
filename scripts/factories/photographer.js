@@ -85,6 +85,7 @@ function mediaFactory(data, name, item){
             img.setAttribute("onclick", "lightbox(this.id)")
             img.setAttribute("id",`${id}`);
             img.setAttribute("class",`${item}`);
+            img.setAttribute("tabIndex","0")
             article.appendChild(img);
             article.setAttribute("class",`article-${item}`)
         }
@@ -93,6 +94,7 @@ function mediaFactory(data, name, item){
             video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
             video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);
+            video.setAttribute("tabIndex","0")
             article.appendChild(video);
             article.setAttribute("class",`article-${item}`)
         }

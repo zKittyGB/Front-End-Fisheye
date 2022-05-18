@@ -49,8 +49,7 @@ async function displayData(photographers, name) {
             const photographerMedia = mediaFactory(newMedia, name, item);
             const mediaGallerie = photographerMedia.getMediaGallerie();
             gallerieSection.appendChild(mediaGallerie); 
-
-        }    
+        }
     });
     const priceSection = document.querySelector(".priceDay");
     const price = document.querySelector(".price");
@@ -110,7 +109,9 @@ async function displayGallerie(photographers, media){
         const populariteLi = document.querySelector(".tri-popularite")
         const dateLi = document.querySelector(".tri-date")
         const titreLi = document.querySelector(".tri-titre")
-        popularite.addEventListener("click", ()=>{
+        const firstImg = document.querySelector(".article-0 img")
+        //fonction organisation menu tri en fonction de popularite
+        function populariteListener(){
             const gallerieSection = document.querySelector(".photograph-gallerie");
             //replacer le menu click en haute position
             ulTri.insertBefore(dateLi,ulTri.firstChild)
@@ -133,8 +134,20 @@ async function displayGallerie(photographers, media){
                 return 0;
             });
             getPhotographerMedia(newMedia, name)
-        });
-        date.addEventListener("click", ()=>{
+        }
+        //ajout du listener clic après un focus dessus
+        popularite.addEventListener("focus", ()=>{
+            popularite.addEventListener("click",populariteListener)
+        })
+        //ajout du listener au clavier  
+        document.addEventListener("keydown",(e)=>{
+            keyCode =e.code    
+            if(popularite === document.activeElement && keyCode === "Enter"){
+                populariteListener()
+            }
+        })
+        //fonction organisation menu tri en fonction de date
+        function dateListener(){
             const gallerieSection = document.querySelector(".photograph-gallerie");
             //replacer le menu click en haute position
             ulTri.insertBefore(populariteLi,ulTri.firstChild)
@@ -156,8 +169,20 @@ async function displayGallerie(photographers, media){
                 return 0;
             });
             getPhotographerMedia(newMedia, name)
-        });
-        titre.addEventListener("click", ()=>{
+        }
+        //ajout du listener clic après un focus dessus
+        date.addEventListener("focus", ()=>{
+            date.addEventListener("click",dateListener)                           
+        })  
+        //ajout du listener au clavier  
+        document.addEventListener("keydown",(e)=>{
+            keyCode =e.code    
+            if(date === document.activeElement && keyCode === "Enter"){
+                dateListener()
+            }
+        })
+        //fonction organisation menu tri en fonction de titre
+        function titreListener(){
             const gallerieSection = document.querySelector(".photograph-gallerie");
             //replacer le menu click en haute position
             ulTri.insertBefore(populariteLi,ulTri.firstChild)
@@ -165,7 +190,6 @@ async function displayGallerie(photographers, media){
             ulTri.insertBefore(dateLi,ulTri.firstChild)
             ulTri.insertBefore(borderTop,ulTri.firstChild)
             ulTri.insertBefore(titreLi,ulTri.firstChild)
-
             radioTitre.checked ="true";
             if(gallerieSection){
                 gallerieSection.remove();
@@ -180,8 +204,51 @@ async function displayGallerie(photographers, media){
                 return 0;
             });
             getPhotographerMedia(newMedia, name)
-        });
+        }
+
+        //ajout du listener clic après un focus dessus
+        titre.addEventListener("focus", ()=>{
+            titre.addEventListener("click",dateListener)                           
+        })
+        //ajout du listener au clavier  
+        document.addEventListener("keydown",(e)=>{
+            keyCode =e.code    
+            if(titre === document.activeElement && keyCode === "Enter"){
+                titreListener()
+            }
+       })
+        firstImg.addEventListener("focus",()=>{
+            const liste = document.querySelectorAll(".liste")
+            //retrait des listener
+            titre.removeEventListener("click", titreListener)
+            date.removeEventListener("click", dateListener)
+            popularite.removeEventListener("click", populariteListener)
+            
+            liste.forEach((newListe)=>{
+                newListe.style.visibility ="hidden"
+                ulTri.firstElementChild.style.visibility="visible"
+            });
+            borderBottom.style.visibility= "hidden"
+            borderTop.style.visibility= "hidden"
+            ulTri.style.backgroundColor= ""    
+        })
     }
+
+    //déclenchement "onclick" sur image via touche enter
+    function pressEnterImg() {
+        const allImg = document.querySelectorAll("article img")
+        document.addEventListener("keydown",(e)=>{
+            keyCode =e.code    
+            allImg.forEach((newAllImg)=>{
+                if(newAllImg === document.activeElement && keyCode === "Enter"){
+                    newAllImg.click();
+                }
+            })
+            
+       })
+    }
+    pressEnterImg();
+
     //afficher / cacher le menu trier par
     function triMenuShow(){
         const liste = document.querySelectorAll(".liste")
@@ -216,6 +283,18 @@ async function displayGallerie(photographers, media){
                 borderTop.style.visibility= "hidden"
                 ulTri.style.backgroundColor= ""
             });
+
+            document.addEventListener("keydown",(e)=>{
+                if(e.code === "Escape"){
+                    liste.forEach((newListe)=>{
+                        newListe.style.visibility ="hidden"
+                        ulTri.firstElementChild.style.visibility="visible"
+                    });
+                    borderBottom.style.visibility= "hidden"
+                    borderTop.style.visibility= "hidden"
+                    ulTri.style.backgroundColor= ""
+                }
+            })
     }
     triMenuShow();
     tri();
