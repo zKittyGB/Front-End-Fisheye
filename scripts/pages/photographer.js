@@ -33,7 +33,7 @@ async function displayData(photographers, name) {
             h2Modal.setAttribute("id",`Contact_${name}`)
         }
     });
-};
+}
 
  // integration du retour de la factory
  function getPhotographerMedia(media, name){
@@ -89,6 +89,8 @@ async function displayData(photographers, name) {
 // création de la gallerie du photographe
 async function displayGallerie(photographers, media){
         let name = "";
+        let keyCode = "";
+
     // récupération du nom du photographe
     photographers.forEach((photographer) =>{
         if(photographer.id == id){
@@ -307,5 +309,5 @@ async function init() {
     const { media } = await getPhotographers();
     displayData(photographers);
     displayGallerie(photographers, media);
-};
+}
 init(); 
