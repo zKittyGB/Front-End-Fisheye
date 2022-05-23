@@ -94,6 +94,7 @@ function mediaFactory(data, name, item){
             video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
             video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);
+            video.setAttribute("class",`${item}`);
             video.setAttribute("tabIndex","0")
             article.appendChild(video);
             article.setAttribute("class",`article-${item}`)

@@ -6,7 +6,11 @@ async function lightbox(clicked_id){
     const id = params.get("id"); 
     const close = document.querySelector(".close");
     const h2 = document.querySelector(".modal h2");
-
+    //retire la fonction onclick sur la gallerie media
+    const photographGallerie = document.querySelectorAll(".photograph-gallerie article")
+    photographGallerie.forEach((newPhotographGallerie)=>{
+        newPhotographGallerie.firstChild.removeAttribute("onclick");
+    })
     //variable essentielle a la co nstruction du carrousel
     const divCarrousel = document.createElement("div");
     const divControlsLeft = document.createElement("div");

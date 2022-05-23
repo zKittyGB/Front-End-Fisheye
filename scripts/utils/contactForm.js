@@ -1,18 +1,55 @@
+const liTri = document.querySelectorAll(".tri li");
+const iTri = document.querySelector(".arrowMenu i");
+const formInput = document.querySelectorAll("form input")
 function displayModal() {
+    const media = document.querySelectorAll(".photograph-gallerie article");
     const modal = document.getElementById("contact_modal");
     const backgroundModal = document.querySelector(".modal");
     let name = document.querySelector(".photograph-infos h1").innerHTML
+    let i = 0;
+    //adapte l'ordre des tabindex
+    liTri.forEach((newLiTri)=>{
+        newLiTri.removeAttribute("tabindex")
+    })
+    media.forEach((newMedia) =>{
+        newMedia.firstChild.removeAttribute("tabindex")
+    })
+    formInput.forEach((newFormInput)=>{
+        newFormInput.setAttribute("tabindex", "0")
+
+    })
+    iTri.removeAttribute("tabindex")
     modal.style.display = "block";
     modal.setAttribute("aria-labelledBy",`Contactme_${name.replace(/ /g, "_")}`)
 	backgroundModal.style.backgroundColor = "#DB8876";
+
+    function keyDown(e){
+        const keyCode = e.code
+        if(keyCode === "Escape"){
+            closeModal()
+        }
+    }
+    document.addEventListener("keydown",keyDown)
 }
 
 function closeModal() {
+    const media = document.querySelectorAll(".photograph-gallerie article");
     const modal = document.getElementById("contact_modal");
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
     const carrousel = document.querySelector(".carrousel");
     const closeLightbox = document.querySelector(".fa-xmark");
+    //adapte l'ordre des tabindex
+    liTri.forEach((newLiTri)=>{
+        newLiTri.setAttribute("tabindex", "0")
+    })
+    media.forEach((newMedia) =>{
+        newMedia.firstChild.setAttribute("tabindex","0")
+    })
+    formInput.forEach((newFormInput)=>{
+        newFormInput.removeAttribute("tabindex")
+    })
+    iTri.setAttribute("tabindex", "0")
     modal.style.display = "none";
     modal.style.display = "none";
     closeLightbox.style.display = "none";
@@ -23,6 +60,11 @@ function closeModal() {
     if(items){
         carrousel.remove()
     }
+    //rajoute la fonction onclick sur la gallerie media
+    const photographGallerie = document.querySelectorAll(".photograph-gallerie article")
+    photographGallerie.forEach((newPhotographGallerie)=>{
+        newPhotographGallerie.firstChild.setAttribute("onclick", "lightbox(this.id)");
+    })
 }
 
 // Objet verification values des inputs
