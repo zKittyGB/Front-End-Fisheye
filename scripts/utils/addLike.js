@@ -1,5 +1,5 @@
 // fonction de gestion des likes
-async function addLike(clicked_id, likes){
+function addLike(clicked_id, likes){
     const like = document.querySelector(`.${clicked_id}`).textContent;
     const likeModify = document.querySelector(`.${clicked_id}`);
     const likeTotaux = document.querySelector(`.like p`).textContent;

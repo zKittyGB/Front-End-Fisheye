@@ -10,7 +10,7 @@ async function getPhotographers() {
 }
 
 // création des infos du photographe
-async function displayData(photographers, name) {
+function displayData(photographers, name) {
     const photographerInfos = document.querySelector(".photograph-infos");
     const photographerPhoto = document.querySelector(".photograph-photo");
     const priceSection = document.querySelector(".priceDay");
@@ -29,7 +29,7 @@ async function displayData(photographers, name) {
             img.setAttribute("alt", `${name}`);
             priceSection.appendChild(photographerPriceDay);
             photographerPriceDay.setAttribute("class","price")
-            h2Modal.textContent = "Contactez-moi " + name.replace(/ /g, "_");
+            h2Modal.textContent = "Contactez-moi " + name.replace(/_/g, " ");
             h2Modal.setAttribute("id",`Contact_${name}`)
         }
     });
@@ -87,7 +87,7 @@ async function displayData(photographers, name) {
 }
 
 // création de la gallerie du photographe
-async function displayGallerie(photographers, media){
+function displayGallerie(photographers, media){
         let name = "";
         let keyCode = "";
 
@@ -111,7 +111,12 @@ async function displayGallerie(photographers, media){
         const populariteLi = document.querySelector(".tri-popularite")
         const dateLi = document.querySelector(".tri-date")
         const titreLi = document.querySelector(".tri-titre")
-        const firstImg = document.querySelector(".article-0 img")
+        if(document.querySelector(".article-0 img")){
+            firstImg = document.querySelector(".article-0 img")
+        }
+        else{
+            firstImg = document.querySelector(".article-0 video")
+        }
         //fonction organisation menu tri en fonction de popularite
         function populariteListener(){
             const gallerieSection = document.querySelector(".photograph-gallerie");
@@ -210,7 +215,7 @@ async function displayGallerie(photographers, media){
 
         //ajout du listener clic après un focus dessus
         titre.addEventListener("focus", ()=>{
-            titre.addEventListener("click",dateListener)                           
+            titre.addEventListener("click",titreListener)                           
         })
         //ajout du listener au clavier  
         document.addEventListener("keydown",(e)=>{
@@ -238,15 +243,11 @@ async function displayGallerie(photographers, media){
 
     //déclenchement "onclick" sur image via touche enter
     function pressEnterImg() {
-        const allImg = document.querySelectorAll("article img")
         document.addEventListener("keydown",(e)=>{
-            keyCode =e.code    
-            allImg.forEach((newAllImg)=>{
-                if(newAllImg === document.activeElement && keyCode === "Enter"){
-                    newAllImg.click();
-                }
-            })
-            
+            keyCode = e.code 
+            if(keyCode === "Enter"){
+                document.activeElement.click();     
+            }            
        })
     }
     pressEnterImg();

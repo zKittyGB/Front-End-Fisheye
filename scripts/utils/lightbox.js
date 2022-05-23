@@ -15,6 +15,8 @@ async function lightbox(clicked_id){
     const  spanNext = document.createElement("span");
     const iPrev = document.createElement("i")
     const iNext = document.createElement("i")
+    const closeLightbox = document.querySelector(".fa-xmark");
+    closeLightbox.style.display = "block";
     //création du carrousel
     modal.insertBefore(divCarrousel, form);
     divCarrousel.appendChild(divControlsLeft);

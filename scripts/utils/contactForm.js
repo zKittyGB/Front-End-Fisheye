@@ -12,8 +12,10 @@ function closeModal() {
     const form = document.querySelector("form");
     const h2 = document.querySelector(".modal h2");
     const carrousel = document.querySelector(".carrousel");
+    const closeLightbox = document.querySelector(".fa-xmark");
     modal.style.display = "none";
     modal.style.display = "none";
+    closeLightbox.style.display = "none";
     form.style.display ="block";
     h2.style.display ="block";
     //détruit le carrousel
