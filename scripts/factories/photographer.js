@@ -13,7 +13,8 @@ function photographerFactory(data) {
         a.setAttribute("id", name);
         a.href=`./photographer.html?id=${id}`
         a.classList.add("photographer");
-        img.setAttribute("src", picture, "alt", )
+        img.setAttribute("src", picture)
+        img.setAttribute("alt",`${name}`)
         h2.textContent = name;
         pVille.classList.add("pVille")
         pVille.textContent = `${city}, ${country}`;
