@@ -82,7 +82,8 @@ function mediaFactory(data, name, item){
         if(image != undefined)
         { 
             const img = document.createElement("img");
-            img.setAttribute("src", picture.replace(/ /g, "_"), "alt",title)
+            img.setAttribute("src", picture.replace(/ /g, "_"),)
+            img.setAttribute("alt",title);
             img.setAttribute("onclick", "lightbox(this.id)")
             img.setAttribute("id",`${id}`);
             img.setAttribute("class",`${item}`);
@@ -95,7 +96,8 @@ function mediaFactory(data, name, item){
             video.setAttribute("controls","")
             video.setAttribute("width","250")
             video.setAttribute("type","video/mp4")
-            video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
+            video.setAttribute("src", movie.replace(/ /g, "_"))
+            video.setAttribute("alt",title)
             video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);
             video.setAttribute("class",`${item}`);
