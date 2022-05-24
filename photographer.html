@@ -36,11 +36,11 @@
         <p>Trier par</p>
         <ul name="tri-type" id="order-by">
           <li tabindex="0" class="liste tri-date">
-            <label><input id="date" type="radio" name="tri" />Date</label>
+            <label for="date"><input id="date" type="radio" name="tri" />Date</label>
           </li>
           <div class="border-li border-top"></div>
           <li tabindex="0"  class="liste tri-popularite">
-            <label
+            <label for="popularite"
               ><input 
                 id="popularite"
                 type="radio"
@@ -50,7 +50,7 @@
           </li>
           <div class="border-li border-bottom"></div>
           <li tabindex="0"  class="liste tri-titre">
-            <label><input  id="titre" type="radio" name="tri" />Titre</label>
+            <label for="titre"><input  id="titre" type="radio" name="tri" />Titre</label>
           </li>
         </ul>
       </div>
@@ -59,7 +59,7 @@
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="Close Contact form" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form" />
         </header>
         <div role="button" class="controls controls-close" aria-label="Contact Me">
           <span class="img close">
