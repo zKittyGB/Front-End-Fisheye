@@ -28,6 +28,7 @@ function displayModal() {
     })
     media.forEach((newMedia) =>{
         newMedia.firstChild.removeAttribute("tabindex")
+        newMedia.firstChild.setAttribute("tabindex", "1")
     })
     formInput.forEach((newFormInput)=>{
         newFormInput.setAttribute("tabindex", "0")

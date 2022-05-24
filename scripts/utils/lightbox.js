@@ -17,8 +17,8 @@ async function lightbox(clicked_id){
     const divControlsRight = document.createElement("div");
     const spanPrev = document.createElement("span");
     const  spanNext = document.createElement("span");
-    const iPrev = document.createElement("i")
-    const iNext = document.createElement("i")
+    const emPrev = document.createElement("em")
+    const emNext = document.createElement("em")
     const closeLightbox = document.querySelector(".fa-xmark");
     closeLightbox.style.display = "block";
     //création du carrousel
@@ -27,8 +27,8 @@ async function lightbox(clicked_id){
     divCarrousel.appendChild(divControlsRight);
     divControlsLeft.appendChild(spanPrev);
     divControlsRight.appendChild(spanNext);
-    spanPrev.appendChild(iPrev);
-    spanNext.appendChild(iNext);
+    spanPrev.appendChild(emPrev);
+    spanNext.appendChild(emNext);
     divCarrousel.setAttribute("class", "carrousel")
     divCarrousel.setAttribute("aria-label", "image closeup view")
     divControlsLeft.setAttribute("role", "button")
@@ -37,18 +37,18 @@ async function lightbox(clicked_id){
     divControlsRight.setAttribute("class", "controls controls-right")
     spanPrev.setAttribute("class","img prev-image")
     spanNext.setAttribute("class","img next-image")
-    iPrev.setAttribute("aria-hidden","true")
-    iPrev.setAttribute("aria-label","Previous image")
-    iPrev.setAttribute("class","fa fa-4x fa-angle-left")
-    iNext.setAttribute("aria-hidden","true")
-    iNext.setAttribute("aria-label","Next image")
-    iNext.setAttribute("class","fa fa-4x fa-angle-right")
+    emPrev.setAttribute("aria-hidden","true")
+    emPrev.setAttribute("aria-label","Previous image")
+    emPrev.setAttribute("class","fa fa-4x fa-angle-left")
+    emNext.setAttribute("aria-hidden","true")
+    emNext.setAttribute("aria-label","Next image")
+    emNext.setAttribute("class","fa fa-4x fa-angle-right")
 
     //variables dependantes de la création du carrousel
     const carrousel = document.querySelector(".carrousel");
     const carrouselItem = document.createElement("div");
-    const iLeft = document.querySelector('.fa-angle-left');
-    const iRight = document.querySelector('.fa-angle-right');
+    const emLeft = document.querySelector('.fa-angle-left');
+    const emRight = document.querySelector('.fa-angle-right');
     //cacher le formulaire de la modal
     close.style.visibility = "visible";
     close.setAttribute("aria-label","Close Dialog")
@@ -57,8 +57,8 @@ async function lightbox(clicked_id){
     carrousel.style.display="inline-flex";
     displayModal();
     modal.style.backgroundColor ="#ffffff";
-    iLeft.style.display = "block";
-    iRight.style.display = "block";
+    emLeft.style.display = "block";
+    emRight.style.display = "block";
     let item = 0;
     const popularite = document.querySelector("#popularite")
     const date = document.querySelector("#date")
