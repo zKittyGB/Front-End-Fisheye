@@ -7,6 +7,22 @@ function displayModal() {
     const backgroundModal = document.querySelector(".modal");
     let name = document.querySelector(".photograph-infos h1").innerHTML
     let i = 0;
+    let errorFirst = document.querySelector('.errorFirst');
+    let errorLast = document.querySelector('.errorLast');
+    let errorEmail = document.querySelector('.errorEmail');
+    let first = document.forms["contact"]["first"];
+    let last = document.forms["contact"]["last"];
+    let  email = document.forms["contact"]["email"];
+    let  message = document.forms["contact"]["message"];
+    //reset des champs inputs
+    first.value="";
+    last.value="";
+    email.value="";
+    message.value="";
+    //reset des champs errors
+    errorFirst.innerHTML="";
+    errorLast.innerHTML="";
+    errorEmail.innerHTML="";
     //adapte l'ordre des tabindex
     liTri.forEach((newLiTri)=>{
         newLiTri.removeAttribute("tabindex")
@@ -78,14 +94,15 @@ class RetourValue {
   }
 
 function validate(event) {
-    let first = document.forms["contact"]["first"];
-    let last = document.forms["contact"]["last"];
-    let  email = document.forms["contact"]["email"];
-    let  message = document.forms["contact"]["message"];
+    const first = document.forms["contact"]["first"];
+    const last = document.forms["contact"]["last"];
+    const  email = document.forms["contact"]["email"];
+    const  message = document.forms["contact"]["message"];
     let errorFirst = document.querySelector('.errorFirst');
     let errorLast = document.querySelector('.errorLast');
     let errorEmail = document.querySelector('.errorEmail');
     let returnFalse = false;
+
     const regexMail = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
     // création d'une instance de retourLog pour recuperer la valeur de chaque elements
     const retourLog = new RetourValue(
@@ -96,11 +113,6 @@ function validate(event) {
     );
     // cancel la redirection au clic submit
     event.preventDefault();
-
-    // Reset des champs error au clic submit
-    errorFirst.innerHTML="";
-    errorLast.innerHTML="";
-    errorEmail.innerHTML="";
 
     // verification que le champs prénom ai un minimum de 2 caractères
     if (first.value.length < 2){
@@ -124,6 +136,7 @@ function validate(event) {
     {
         return false;
     }
+    console.log(retourLog)
     closeModal();
     return true;
 }
