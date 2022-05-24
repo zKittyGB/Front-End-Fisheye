@@ -1,5 +1,5 @@
 const liTri = document.querySelectorAll(".tri li");
-const iTri = document.querySelector(".arrowMenu i");
+const emTri = document.querySelector(".arrowMenu em");
 const formInput = document.querySelectorAll("form input")
 function displayModal() {
     const media = document.querySelectorAll(".photograph-gallerie article");
@@ -33,7 +33,7 @@ function displayModal() {
         newFormInput.setAttribute("tabindex", "0")
 
     })
-    iTri.removeAttribute("tabindex")
+    emTri.removeAttribute("tabindex")
     modal.style.display = "block";
     modal.setAttribute("aria-labelledBy",`Contactme_${name.replace(/ /g, "_")}`)
 	backgroundModal.style.backgroundColor = "#DB8876";
@@ -64,7 +64,7 @@ function closeModal() {
     formInput.forEach((newFormInput)=>{
         newFormInput.removeAttribute("tabindex")
     })
-    iTri.setAttribute("tabindex", "0")
+    emTri.setAttribute("tabindex", "0")
     modal.style.display = "none";
     modal.style.display = "none";
     closeLightbox.style.display = "none";

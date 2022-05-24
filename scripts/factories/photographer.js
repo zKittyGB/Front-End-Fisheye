@@ -14,6 +14,7 @@ function photographerFactory(data) {
         a.href=`./photographer.html?id=${id}`
         a.classList.add("photographer");
         img.setAttribute("src", picture)
+        img.setAttribute("alt", `${name} profil picture`);
         h2.textContent = name;
         pVille.classList.add("pVille")
         pVille.textContent = `${city}, ${country}`;
@@ -91,6 +92,9 @@ function mediaFactory(data, name, item){
         }
         else{
             const video = document.createElement("video");
+            video.setAttribute("controls","")
+            video.setAttribute("width","250")
+            video.setAttribute("type","video/mp4")
             video.setAttribute("src", movie.replace(/ /g, "_"), "alt",title)
             video.setAttribute("onclick", "lightbox(this.id)")
             video.setAttribute("id",`${id}`);

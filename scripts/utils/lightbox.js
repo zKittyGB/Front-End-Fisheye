@@ -124,6 +124,9 @@ async function lightbox(clicked_id){
             else{
                 div.appendChild(video);
                 video.setAttribute("src",`${src}`);
+                video.setAttribute("controls","")
+                video.setAttribute("width","250")
+                video.setAttribute("type","video/mp4")
                 video.setAttribute("class",`${item}`);
                 video.setAttribute("alt",`${newMedia.title}`);
             }
