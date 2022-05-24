@@ -6,14 +6,13 @@ function displayModal() {
     const modal = document.getElementById("contact_modal");
     const backgroundModal = document.querySelector(".modal");
     let name = document.querySelector(".photograph-infos h1").innerHTML
-    let i = 0;
     let errorFirst = document.querySelector('.errorFirst');
     let errorLast = document.querySelector('.errorLast');
     let errorEmail = document.querySelector('.errorEmail');
-    let first = document.forms["contact"]["first"];
-    let last = document.forms["contact"]["last"];
-    let  email = document.forms["contact"]["email"];
-    let  message = document.forms["contact"]["message"];
+    const first = document.forms["contact"]["first"];
+    const last = document.forms["contact"]["last"];
+    const  email = document.forms["contact"]["email"];
+    const message = document.forms["contact"]["message"];
     //reset des champs inputs
     first.value="";
     last.value="";
