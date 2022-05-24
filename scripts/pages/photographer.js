@@ -14,7 +14,9 @@ function displayData(photographers, name) {
     const photographerInfos = document.querySelector(".photograph-infos");
     const photographerPhoto = document.querySelector(".photograph-photo");
     const priceSection = document.querySelector(".priceDay");
-    const h2Modal = document.querySelector("h2");
+    const modal = document.querySelector(".modal header");
+    const modalLastItem = document.querySelector(".modal header img");
+    const h2Modal = document.createElement("h2");
     photographers.forEach((photographer) => {
         if(photographer.id == id){
             const photographerModel = photographerFactory(photographer);
@@ -29,6 +31,7 @@ function displayData(photographers, name) {
             img.setAttribute("alt", `${name}`);
             priceSection.appendChild(photographerPriceDay);
             photographerPriceDay.setAttribute("class","price")
+            modal.insertBefore(h2Modal, modalLastItem)
             h2Modal.textContent = "Contactez-moi " + name.replace(/_/g, " ");
             h2Modal.setAttribute("id",`Contact_${name}`)
         }
