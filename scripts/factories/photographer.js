@@ -14,7 +14,7 @@ function photographerFactory(data) {
         a.href=`./photographer.html?id=${id}`
         a.classList.add("photographer");
         img.setAttribute("src", picture)
-        img.setAttribute("alt",`${name}`)
+        img.setAttribute("alt",`photographer's picture`)
         h2.textContent = name;
         pVille.classList.add("pVille")
         pVille.textContent = `${city}, ${country}`;
